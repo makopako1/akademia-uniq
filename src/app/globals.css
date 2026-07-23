@@ -1,26 +1,270 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   AKADEMIA STARTOWA UNIQ — Design system
+   Aesthetic: "Obsidian & Liquid Chrome"
+   ============================================================ */
+
+@theme {
+  /* Surfaces */
+  --color-base: #050507;
+  --color-base-2: #08090e;
+  --color-panel: #0d0e14;
+  --color-panel-2: #14161f;
+  --color-panel-3: #1b1e29;
+
+  /* Text */
+  --color-ink: #f5f6fa;
+  --color-muted: #a3a9b7;
+  --color-faint: #6c7280;
+
+  /* Product / jewel accents */
+  --color-gold: #f4c25b;
+  --color-orange: #ff8f43;
+  --color-magenta: #ff4d8d;
+  --color-cyan: #4ec6f5;
+  --color-emerald: #34d399;
+  --color-teal: #22d3ee;
+  --color-violet: #8b7bff;
+  --color-chrome: #e7e9f0;
+
+  /* Fonts (wired from next/font in layout.tsx) */
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    border-color: color-mix(in oklab, white 10%, transparent);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-violet) 40%, transparent);
+    color: #fff;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, white 10%, transparent);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, white 20%, transparent);
+    background-clip: padding-box;
+  }
+
+  :focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--color-violet) 70%, white);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   Signature utilities
+   ============================================================ */
+
+/* Liquid chrome text */
+.text-chrome {
+  background: linear-gradient(
+    177deg,
+    #ffffff 0%,
+    #eef0f6 26%,
+    #b8bcca 52%,
+    #f3f4f9 63%,
+    #8f93a6 82%,
+    #dfe2ec 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass panels */
+.glass {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, white 6%, transparent), color-mix(in oklab, white 1.5%, transparent)),
+    var(--color-panel);
+  border: 1px solid color-mix(in oklab, white 9%, transparent);
+  box-shadow:
+    inset 0 1px 0 0 color-mix(in oklab, white 10%, transparent),
+    0 24px 60px -30px rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.glass-strong {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, white 9%, transparent), color-mix(in oklab, white 2%, transparent)),
+    var(--color-panel-2);
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  box-shadow:
+    inset 0 1px 0 0 color-mix(in oklab, white 14%, transparent),
+    0 30px 80px -40px rgba(0, 0, 0, 0.95);
+}
+
+/* Hairline top highlight (used on cards) */
+.edge-highlight {
+  position: relative;
+}
+.edge-highlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, color-mix(in oklab, white 22%, transparent), transparent 40%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Grain overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hairline grid backdrop */
+.grid-lines {
+  background-image:
+    linear-gradient(color-mix(in oklab, white 3.5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, white 3.5%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+/* Radial aura glow helper */
+.aura {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Chrome divider */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, white 16%, transparent), transparent);
+}
+
+/* Ticker/eyebrow mono label */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Animated conic border for feature moments */
+.conic-border {
+  position: relative;
+  isolation: isolate;
+}
+.conic-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle, 0deg), transparent 55%, color-mix(in oklab, white 55%, transparent), transparent 75%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin-border 6s linear infinite;
+  z-index: -1;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-border {
+  to { --angle: 360deg; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes acc-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes acc-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+.animate-marquee { animation: marquee 32s linear infinite; }
+
+/* GSAP reveal initial state (avoids flash before JS) */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-init { opacity: 1; transform: none; }
 }

@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Akademia Startowa UNIQ
 
-## Getting Started
+Przewodnik startowy („pierwsze kroki") dla polskiej społeczności UNIQ.
+Next.js 16 + React 19 + Tailwind v4 + GSAP. Ciemny, premium motyw („Obsidian & Liquid Chrome").
 
-First, run the development server:
+## Uruchomienie lokalne
+
+Wymagany Node.js 20.9+ (projekt budowany na Node 24).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # tryb deweloperski → http://localhost:3000
+# lub produkcyjnie:
+npm run build && npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Hasła dostępu
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Cała strona** jest chroniona hasłem: `UNIQ2026`
+- **Sekcja „Model biznesowy"** (`/network`) ma dodatkowe hasło: `UNIQNETWORK`
+- Hasło do **Akademii na Vimeo**: `UNIQ2026` (wyświetlane na stronie `/akademia`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> Uwaga: to „miękka" bramka po stronie przeglądarki — wygodna dla społeczności,
+> ale nie jest zabezpieczeniem kryptograficznym. Zmienisz hasła w `src/lib/site.ts`.
 
-## Learn More
+## Gdzie edytować treść
 
-To learn more about Next.js, take a look at the following resources:
+Prawie cała treść i konfiguracja są w jednym pliku:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **`src/lib/site.ts`** — linki, kroki, produkty, kanały sygnałowe, harmonogram,
+  pakiety, lista wideo Akademii, checklista, FAQ, nawigacja, hasła.
+- **`src/lib/accents.ts`** — kolory akcentów per produkt.
+- **`src/app/globals.css`** — design system (kolory, fonty, efekty).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Linki, które udostępnia **Lider** (Solantis, grupy Telegram), celowo NIE są w kodzie —
+strona kieruje użytkownika do Lidera.
 
-## Deploy on Vercel
+## Struktura (podstrony)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`/` Start · `/spolecznosc` · `/platforma` · `/broker` · `/sygnaly` · `/tradingview`
+· `/automatyzacja` · `/narzedzia` · `/trading` · `/harmonogram` · `/akademia`
+· `/pakiety` · `/network` (chronione) · `/faq`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy (Vercel)
+
+1. Wrzuć folder `akademia-uniq` do repozytorium (GitHub).
+2. Na [vercel.com](https://vercel.com) → New Project → import repo.
+3. Framework wykryje się automatycznie (Next.js). Deploy.
+
+Nie trzeba żadnych zmiennych środowiskowych. Strona jest w pełni statyczna.
