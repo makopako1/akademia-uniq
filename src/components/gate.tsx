@@ -125,7 +125,7 @@ export function Gate({
               <Lock className="h-4.5 w-4.5 text-muted" />
             </div>
             <div>
-              <h1 className="text-base font-semibold leading-tight">Strefa społeczności</h1>
+              <h1 className="text-base font-semibold leading-tight text-white">Strefa społeczności</h1>
               <p className="text-xs text-muted">Podaj hasło, aby wejść</p>
             </div>
           </div>

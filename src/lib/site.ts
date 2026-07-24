@@ -470,7 +470,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Czym jest automatyzacja (AtlasAI)?",
-    a: "To zautomatyzowany system tradingowy działający na MetaTrader 5, dostępny dla pakietu Elite. Uruchamiasz go na koncie brokerskim, a on realizuje transakcje według reguł. Podstawy wyjaśniamy w zakładce Automatyzacja i w Akademii UNIQ.",
+    a: "To zautomatyzowany system tradingowy działający na MetaTrader 5, dostępny dla pakietu Elite. Uruchamiasz go na koncie brokerskim, a on realizuje transakcje według reguł. Podstawy wyjaśniamy w zakładce Automatyzacja. Aby ją podłączyć, zgłoś się do swojego Lidera.",
   },
   {
     q: "Kim jest Damian Pacan?",

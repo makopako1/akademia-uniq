@@ -44,34 +44,42 @@ export default function Page() {
             <div className="space-y-3">
               {SCHEDULE_WEEK.map((w) => (
                 <GlassCard key={w.day} className="p-5 sm:p-6">
-                  <div className="flex flex-wrap items-center gap-4">
-                    <div className="flex w-28 shrink-0 items-center gap-2">
-                      <span className={cn("h-2.5 w-2.5 rounded-full", ACCENT_DOT[w.accent])} />
-                      <span className="font-semibold">{w.day}</span>
-                    </div>
-                    <div className={cn("flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-sm", ACCENT_CHIP[w.accent])}>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2.5">
+                    <span className={cn("h-2.5 w-2.5 rounded-full", ACCENT_DOT[w.accent])} />
+                    <span className="text-lg font-semibold">{w.day}</span>
+                    <span
+                      className={cn(
+                        "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-sm",
+                        ACCENT_CHIP[w.accent],
+                      )}
+                    >
                       <Clock className="h-3.5 w-3.5" />
                       {w.time}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="font-medium text-ink">{w.title}</div>
-                      <div className="flex items-center gap-1.5 text-sm text-muted">
-                        {w.where === "Zoom" ? <Video className="h-3.5 w-3.5" /> : <Send className="h-3.5 w-3.5" />}
-                        {w.where}
-                      </div>
-                    </div>
-                    {w.tag && <Chip accent={w.accent}>{w.tag}</Chip>}
-                    <GCalButton
-                      event={{
-                        kind: "weekly",
-                        title: w.title,
-                        byday: w.byday,
-                        time: w.time,
-                        durationMin: w.durationMin,
-                        where: w.where,
-                      }}
-                    />
+                    </span>
+                    {w.tag && (
+                      <Chip accent={w.accent} className="sm:ml-auto">
+                        {w.tag}
+                      </Chip>
+                    )}
                   </div>
+
+                  <h3 className="mt-4 text-lg font-semibold leading-snug">{w.title}</h3>
+                  <div className="mt-1.5 flex items-center gap-1.5 text-sm text-muted">
+                    {w.where === "Zoom" ? <Video className="h-3.5 w-3.5" /> : <Send className="h-3.5 w-3.5" />}
+                    {w.where}
+                  </div>
+
+                  <GCalButton
+                    event={{
+                      kind: "weekly",
+                      title: w.title,
+                      byday: w.byday,
+                      time: w.time,
+                      durationMin: w.durationMin,
+                      where: w.where,
+                    }}
+                    className="mt-4"
+                  />
                 </GlassCard>
               ))}
             </div>

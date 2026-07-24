@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock, ShieldCheck, HeartOff, Gauge, PlayCircle, Sparkles } from "lucide-react";
+import { Clock, ShieldCheck, HeartOff, Gauge, Sparkles } from "lucide-react";
 import {
   Container,
   Section,
@@ -8,14 +8,12 @@ import {
   Callout,
   Chip,
   StepBadge,
-  ExternalButton,
   InternalButton,
   LeaderBadge,
 } from "@/components/kit";
 import { PageHero } from "@/components/page-hero";
 import { StepNav } from "@/components/step-nav";
 import { Reveal } from "@/components/reveal";
-import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Krok 6 — Automatyzacja (AtlasAI)",
@@ -77,9 +75,9 @@ export default function Page() {
                     To fundament. Jeśli jeszcze go nie masz — wróć do kroku 3 i najpierw ustaw brokera
                     oraz MetaTrader 5.
                   </Setup>
-                  <Setup n={2} title="Podłącz automatyzację według instrukcji">
-                    Konfigurację prowadzimy razem — krok po kroku pokazujemy ją na wideo w Akademii,
-                    a Twój Lider pomoże Ci ją uruchomić. Nie musisz nic „programować”.
+                  <Setup n={2} title="Podłącz automatyzację z Liderem">
+                    Podłączenie ustawiasz razem ze swoim Liderem — to on przeprowadzi Cię przez proces
+                    krok po kroku. Nie musisz nic „programować”.
                   </Setup>
                   <Setup n={3} title="Obserwuj i ucz się" last>
                     Gdy system działa, Twoją rolą jest spokojna obserwacja i nauka. Regularnie zaglądaj
@@ -92,19 +90,16 @@ export default function Page() {
             <Reveal className="space-y-4">
               <GlassCard className="p-6">
                 <Sparkles className="h-5 w-5 text-emerald" />
-                <h3 className="mt-3 font-semibold">Konfiguracja krok po kroku</h3>
+                <h3 className="mt-3 font-semibold">Podłączenie przez Lidera</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  Pełną instrukcję podpięcia znajdziesz w Akademii UNIQ. Jeśli coś jest niejasne —
-                  odezwij się do Lidera.
+                  Masz pakiet <strong className="text-ink">Elite</strong> i chcesz podłączyć
+                  automatyzację? Zgłoś się do swojego Lidera — przeprowadzi Cię przez konfigurację
+                  krok po kroku.
                 </p>
                 <div className="mt-4">
-                  <LeaderBadge>Wsparcie przy podpięciu — od Lidera</LeaderBadge>
+                  <LeaderBadge>Podłączenie automatyzacji — od Lidera</LeaderBadge>
                 </div>
               </GlassCard>
-              <ExternalButton href={SITE.links.vimeo} variant="secondary" className="w-full">
-                <PlayCircle className="h-4 w-4" />
-                Instrukcja na wideo (Akademia)
-              </ExternalButton>
               <InternalButton href="/broker" variant="outline" className="w-full">
                 Wróć do kroku 3: Broker
               </InternalButton>

@@ -198,17 +198,15 @@ export default function Home() {
             <GlassCard strong className="relative overflow-hidden p-8 sm:p-12">
               <Glow accent="magenta" className="-right-10 -top-10 h-64 w-64" opacity={0.16} />
               <div className="relative grid items-center gap-8 md:grid-cols-[1fr_1.3fr]">
-                <div className="relative">
-                  <div className="conic-border relative aspect-[4/5] overflow-hidden rounded-3xl">
-                    <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-b from-panel-2 to-black/60">
-                      <LogoMark className="h-10 opacity-70" />
-                      <div className="mt-6 text-center">
-                        <div className="text-2xl font-semibold">Damian Pacan</div>
-                        <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                          Nowy polski edukator
-                        </div>
-                      </div>
-                    </div>
+                <div className="relative mx-auto w-full max-w-sm md:mx-0">
+                  <div className="conic-border relative overflow-hidden rounded-3xl">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/damian.jpg"
+                      alt="Damian Pacan — nowy polski edukator UNIQ"
+                      draggable={false}
+                      className="block w-full select-none"
+                    />
                   </div>
                 </div>
                 <div>
