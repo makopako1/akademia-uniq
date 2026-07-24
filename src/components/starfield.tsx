@@ -80,7 +80,7 @@ export function Starfield() {
       {/* Aurora depth wash */}
       <div className="absolute inset-0 bg-[radial-gradient(60%_45%_at_50%_-5%,rgba(139,123,255,0.14),transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(45%_35%_at_85%_10%,rgba(78,198,245,0.08),transparent_60%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-base to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-void to-transparent" />
     </div>
   );
 }

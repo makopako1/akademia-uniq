@@ -7,8 +7,8 @@
 
 @theme {
   /* Surfaces */
-  --color-base: #050507;
-  --color-base-2: #08090e;
+  --color-void: #050507;
+  --color-void-2: #08090e;
   --color-panel: #0d0e14;
   --color-panel-2: #14161f;
   --color-panel-3: #1b1e29;
@@ -48,7 +48,7 @@
   }
 
   body {
-    background-color: var(--color-base);
+    background-color: var(--color-void);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv01";

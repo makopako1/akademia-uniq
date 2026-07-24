@@ -65,7 +65,7 @@ export function SiteHeader() {
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-white/10 bg-base/70 backdrop-blur-xl"
+          ? "border-b border-white/10 bg-void/70 backdrop-blur-xl"
           : "border-b border-transparent",
       )}
     >
@@ -127,7 +127,7 @@ export function SiteHeader() {
       {/* Mobile drawer */}
       <div
         className={cn(
-          "fixed inset-x-0 top-16 z-40 origin-top overflow-y-auto border-b border-white/10 bg-base/95 backdrop-blur-xl transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-16 z-40 origin-top overflow-y-auto border-b border-white/10 bg-void/95 backdrop-blur-xl transition-all duration-300 lg:hidden",
           open ? "max-h-[calc(100dvh-4rem)] opacity-100" : "pointer-events-none max-h-0 opacity-0",
         )}
       >

@@ -6,7 +6,7 @@ import { SITE, STEPS } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="relative z-10 mt-24 border-t border-white/10 bg-base-2/60">
+    <footer className="relative z-10 mt-24 border-t border-white/10 bg-void-2/60">
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>

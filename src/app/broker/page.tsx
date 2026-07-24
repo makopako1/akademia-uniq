@@ -15,6 +15,7 @@ import {
 import { PageHero } from "@/components/page-hero";
 import { StepNav } from "@/components/step-nav";
 import { Reveal } from "@/components/reveal";
+import { BrandChip } from "@/components/brand-chip";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -48,7 +49,11 @@ export default function Page() {
             subtitle="To bezpłatna, oficjalna aplikacja. Zainstaluj na komputerze, a najlepiej też na telefonie — będziesz mieć rynek zawsze pod ręką."
           />
 
-          <Reveal stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal className="mt-6">
+            <BrandChip src="/mt5.png" alt="MetaTrader 5" imgClassName="h-9" />
+          </Reveal>
+
+          <Reveal stagger className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <DownloadCard icon={Monitor} label="Windows" note="Aplikacja desktop" href={SITE.links.mt5} />
             <DownloadCard icon={Apple} label="macOS" note="Wersja dla Maca" href={SITE.links.mt5} />
             <DownloadCard icon={Smartphone} label="iPhone / iPad" note="App Store" href={SITE.links.mt5} />
@@ -94,6 +99,15 @@ export default function Page() {
             title="Załóż konto na Solantis"
             subtitle="Solantis to giełda, na której podpinamy handel i (dla Elite) automatyzację. Konto zakładasz przez indywidualny link od swojego Lidera."
           />
+
+          <Reveal className="mt-6">
+            <div className="glass edge-highlight inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl px-5 py-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/solantis.png" alt="Solantis" className="h-8 w-auto select-none" draggable={false} />
+              <span className="h-6 w-px bg-white/12" />
+              <span className="text-sm text-muted">Nasza giełda — tutaj zakładasz konto handlowe</span>
+            </div>
+          </Reveal>
 
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             <Reveal className="lg:col-span-2">

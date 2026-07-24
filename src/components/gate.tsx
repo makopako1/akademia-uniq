@@ -104,7 +104,7 @@ export function Gate({
 
   /* ---------- Screen variant (whole site) ---------- */
   return (
-    <div className="fixed inset-0 z-[100] flex min-h-dvh items-center justify-center overflow-hidden bg-base px-6">
+    <div className="fixed inset-0 z-[100] flex min-h-dvh items-center justify-center overflow-hidden bg-void px-6">
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-70" />
       <div className="aura left-1/2 top-1/3 h-[38rem] w-[38rem] -translate-x-1/2 bg-violet/12" />
 

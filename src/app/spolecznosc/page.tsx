@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Users, Crown, Pin, MessageSquarePlus, Sparkle, Send } from "lucide-react";
+import { Pin, MessageSquarePlus, Sparkle, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Container,
@@ -47,9 +47,13 @@ export default function Page() {
           <Reveal stagger className="mt-10 grid gap-4 md:grid-cols-2">
             <GlassCard className="p-7">
               <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-violet/25 bg-violet/10 text-violet">
-                  <Users className="h-5 w-5" />
-                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/group-uniq.jpg"
+                  alt="Grupa UNIQ"
+                  draggable={false}
+                  className="h-14 w-14 shrink-0 select-none rounded-2xl object-cover ring-1 ring-white/10"
+                />
                 <div>
                   <div className="text-lg font-semibold">UNIQ 🇵🇱</div>
                   <div className="font-mono text-[11px] uppercase tracking-wide text-muted">Grupa główna / forum</div>
@@ -68,9 +72,13 @@ export default function Page() {
 
             <GlassCard className="p-7">
               <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-gold/25 bg-gold/10 text-gold">
-                  <Crown className="h-5 w-5" />
-                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/group-elite.jpg"
+                  alt="Grupa UNIQ Elite"
+                  draggable={false}
+                  className="h-14 w-14 shrink-0 select-none rounded-2xl object-cover ring-1 ring-white/10"
+                />
                 <div>
                   <div className="text-lg font-semibold">UNIQ Elite</div>
                   <div className="font-mono text-[11px] uppercase tracking-wide text-muted">Tylko pakiet Elite</div>

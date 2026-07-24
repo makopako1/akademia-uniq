@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE, STEPS, PRODUCTS, SCHEDULE_WEEK } from "@/lib/site";
-import { ACCENT_TEXT, ACCENT_DOT, ACCENT_CHIP } from "@/lib/accents";
+import { ACCENT_TEXT, ACCENT_DOT } from "@/lib/accents";
+import { ProductIcon } from "@/components/product-icon";
 import {
   Container,
   Section,
@@ -168,9 +169,7 @@ export default function Home() {
             {PRODUCTS.map((p) => (
               <GlassCard key={p.key} hover className="p-6">
                 <div className="flex items-center gap-3">
-                  <span className={cn("flex h-10 w-10 items-center justify-center rounded-xl border font-mono text-xs", ACCENT_CHIP[p.accent])}>
-                    {p.name.split(" ")[1]?.slice(0, 2).toUpperCase()}
-                  </span>
+                  <ProductIcon pkey={p.key} className="h-12 w-12" />
                   <div>
                     <div className="font-semibold">{p.name}</div>
                     <div className={cn("font-mono text-[11px] uppercase tracking-wide", ACCENT_TEXT[p.accent])}>

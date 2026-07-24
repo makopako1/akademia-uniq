@@ -18,6 +18,7 @@ import { PageHero } from "@/components/page-hero";
 import { StepNav } from "@/components/step-nav";
 import { Reveal } from "@/components/reveal";
 import { BrowserFrame } from "@/components/frames";
+import { BrandChip } from "@/components/brand-chip";
 
 export const metadata: Metadata = {
   title: "Krok 5 — TradingView + wskaźniki UNIQ",
@@ -63,6 +64,7 @@ export default function Page() {
         subtitle="Wskaźniki UNIQ działają na TradingView. Podpięcie jest banalnie proste: podajesz swoją nazwę użytkownika w platformie, a wtyczki same przypisują się do konta."
       >
         <ExternalButton href={SITE.links.tradingview}>Załóż konto TradingView</ExternalButton>
+        <BrandChip src="/tradingview.png" alt="TradingView" imgClassName="h-6" className="px-4 py-2.5" />
       </PageHero>
 
       {/* Indicators */}
