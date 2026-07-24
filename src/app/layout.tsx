@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     "Przewodnik krok po kroku dla polskiej społeczności UNIQ. Platforma, narzędzia, broker, sygnały, TradingView, harmonogram i Akademia — wszystko w jednym miejscu.",
   applicationName: "Akademia Startowa UNIQ",
   robots: { index: false, follow: false },
-  icons: { icon: "/favicon.svg" },
 };
 
 export const viewport: Viewport = {
