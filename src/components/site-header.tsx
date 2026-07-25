@@ -17,6 +17,7 @@ const STEP_ITEMS: Item[] = STEPS.map((s) => ({
 }));
 
 const MORE_ITEMS: Item[] = [
+  { label: "Narzędzia UNIQ", href: "/narzedzia", desc: "Learn, Live, Hub, Scan, Intelligence, Connect." },
   { label: "Podstawy tradingu", href: "/trading", desc: "Mindset, psychologia i ryzyko." },
   { label: "Pakiety", href: "/pakiety", desc: "Poziomy członkostwa." },
   { label: "Model biznesowy", href: "/network", locked: true, desc: "Plan wynagrodzeń." },
@@ -90,12 +91,10 @@ export function SiteHeader() {
             onHover={() => setMenu("kroki")}
             pathname={pathname}
           />
-          <NavLink href="/narzedzia" active={isActive("/narzedzia")}>Narzędzia</NavLink>
-          <NavLink href="/sygnaly" active={isActive("/sygnaly")}>Sygnały</NavLink>
           <NavLink href="/harmonogram" active={isActive("/harmonogram")}>Harmonogram</NavLink>
           <NavLink href="/akademia" active={isActive("/akademia")}>Akademia</NavLink>
           <Dropdown
-            label="Więcej"
+            label="Baza wiedzy"
             items={MORE_ITEMS}
             open={menu === "wiecej"}
             onOpen={() => setMenu(menu === "wiecej" ? null : "wiecej")}

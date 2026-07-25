@@ -264,6 +264,7 @@ export type WeekItem = {
   tag?: string;
   byday: "MO" | "TU" | "WE" | "TH" | "FR" | "SA" | "SU";
   durationMin: number;
+  presenter: string;
 };
 
 export const SCHEDULE_WEEK: WeekItem[] = [
@@ -276,6 +277,7 @@ export const SCHEDULE_WEEK: WeekItem[] = [
     tag: "dla każdego",
     byday: "MO",
     durationMin: 60,
+    presenter: "Damian Pacan",
   },
   {
     day: "Środa",
@@ -286,6 +288,7 @@ export const SCHEDULE_WEEK: WeekItem[] = [
     tag: "Elite",
     byday: "WE",
     durationMin: 60,
+    presenter: "Damian Pacan",
   },
   {
     day: "Sobota",
@@ -296,6 +299,7 @@ export const SCHEDULE_WEEK: WeekItem[] = [
     tag: "zespół",
     byday: "SA",
     durationMin: 90,
+    presenter: "Liderzy UNIQ + goście specjalni",
   },
 ];
 

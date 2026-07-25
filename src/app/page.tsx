@@ -27,6 +27,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Reveal, HeroReveal } from "@/components/reveal";
 import { Checklist } from "@/components/checklist";
+import { HomeStatus } from "@/components/home-status";
 import { LogoMark } from "@/components/logo";
 
 export default function Home() {
@@ -91,6 +92,15 @@ export default function Home() {
           </Reveal>
         </Container>
       </section>
+
+      {/* ================= STATUS: next step + next session ================= */}
+      <Section className="py-6 sm:py-8">
+        <Container>
+          <Reveal>
+            <HomeStatus />
+          </Reveal>
+        </Container>
+      </Section>
 
       {/* ================= NEWS / EVENT ================= */}
       <Section className="py-8 sm:py-12">

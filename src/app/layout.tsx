@@ -5,6 +5,7 @@ import { Starfield } from "@/components/starfield";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Gate } from "@/components/gate";
+import { ChecklistFab } from "@/components/checklist-fab";
 import { SITE } from "@/lib/site";
 
 const sora = Sora({
@@ -60,6 +61,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </div>
+          <ChecklistFab />
         </Gate>
       </body>
     </html>
