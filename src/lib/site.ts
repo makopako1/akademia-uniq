@@ -434,12 +434,28 @@ export const ACADEMY_VIDEOS = [
   "Testimonial — Wiktoria",
 ];
 
+/* ---------- Nadchodzące wydarzenie ---------- */
+
+export const EVENT = {
+  badge: "Nadchodzące wydarzenie",
+  title: "UNIQ Unfold — Poland",
+  date: "15 sierpnia 2026",
+  time: "13:00 – 16:00",
+  city: "Łódź",
+  venue: "DoubleTree by Hilton",
+  price: "od $23",
+  image: "/event-lodz.jpg",
+  ticketUrl: "https://www.eventbrite.com/e/uniq-unfold-poland-tickets-1992433326715",
+  desc: "Bardzo ważne szkolenie polskiego zespołu UNIQ — otwarte dla wszystkich. Pokazujemy nasz biznes od środka, a wśród prelegentów wystąpią zaproszeni multimilionerzy. Świetna okazja, by zobaczyć wizję UNIQ na żywo i zabrać ze sobą gości.",
+} as const;
+
 /* ---------- Checklist pierwszych 48h ---------- */
 
-export const CHECKLIST: { id: string; label: string; href?: string }[] = [
+export const CHECKLIST: { id: string; label: string; href?: string; external?: boolean }[] = [
   { id: "tg", label: "Dołącz do grup na Telegramie (UNIQ + UNIQ Elite) — poproś Lidera o linki", href: "/spolecznosc" },
   { id: "hello", label: "Napisz wiadomość powitalną na grupie UNIQ (krótko o sobie i celach)", href: "/spolecznosc" },
   { id: "pinned", label: "Przeczytaj przypięte wiadomości na grupie", href: "/spolecznosc" },
+  { id: "event-lodz", label: "Kup bilet na UNIQ Unfold — Łódź (15 sierpnia)", href: EVENT.ticketUrl, external: true },
   { id: "platform", label: "Zaloguj się na platformę i rozejrzyj po panelu", href: "/platforma" },
   { id: "mt5", label: "Pobierz i zainstaluj MetaTrader 5", href: "/broker" },
   { id: "solantis", label: "Załóż konto na Solantis (link od Lidera)", href: "/broker" },
