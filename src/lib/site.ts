@@ -21,7 +21,7 @@ export const SITE = {
     platform: "https://uniqglobal.net",
     platformApp: "https://my.uniqglobal.net",
     mt5: "https://www.metatrader5.com/en/download",
-    vimeo: "https://bit.ly/akademiauniq",
+    vimeo: "https://vimeo.com/showcase/12149242",
     tradingview: "https://www.tradingview.com",
     damianInstagram: "https://www.instagram.com/damix.trades/",
     // Prywatne — udostępnia wyłącznie Lider:
