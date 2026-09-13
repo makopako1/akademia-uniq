@@ -6,10 +6,9 @@ import {
   Sparkles,
   CalendarDays,
   Compass,
-  Ticket,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { SITE, STEPS, PRODUCTS, SCHEDULE_WEEK, EVENT } from "@/lib/site";
+import { SITE, STEPS, PRODUCTS, SCHEDULE_WEEK } from "@/lib/site";
 import { ACCENT_TEXT, ACCENT_DOT } from "@/lib/accents";
 import { ProductIcon } from "@/components/product-icon";
 import {
@@ -98,58 +97,6 @@ export default function Home() {
         <Container>
           <Reveal>
             <HomeStatus />
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* ================= NEWS / EVENT ================= */}
-      <Section className="py-8 sm:py-12">
-        <Container>
-          <Reveal>
-            <GlassCard strong className="overflow-hidden">
-              <div className="grid md:grid-cols-2">
-                <div className="relative aspect-[2/1] md:aspect-auto">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={EVENT.image}
-                    alt="UNIQ Unfold — Poland, Łódź"
-                    draggable={false}
-                    className="absolute inset-0 h-full w-full select-none object-cover object-left"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:bg-gradient-to-r md:from-transparent md:to-panel-2/50" />
-                </div>
-
-                <div className="p-7 sm:p-9">
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-magenta/70" />
-                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-magenta" />
-                    </span>
-                    <span className="eyebrow">Aktualności · {EVENT.badge}</span>
-                  </div>
-
-                  <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl">
-                    {EVENT.title} — <span className="text-chrome">{EVENT.city}</span>
-                  </h2>
-
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    <Chip accent="violet">{EVENT.date}</Chip>
-                    <Chip accent="cyan">{EVENT.time}</Chip>
-                    <Chip accent="gold">{EVENT.venue}, {EVENT.city}</Chip>
-                  </div>
-
-                  <p className="mt-4 text-sm leading-relaxed text-muted">{EVENT.desc}</p>
-
-                  <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3">
-                    <ExternalButton href={EVENT.ticketUrl} size="lg">
-                      <Ticket className="h-4 w-4" />
-                      Kup bilet
-                    </ExternalButton>
-                    <span className="text-sm text-muted">Bilety {EVENT.price}</span>
-                  </div>
-                </div>
-              </div>
-            </GlassCard>
           </Reveal>
         </Container>
       </Section>

@@ -8,6 +8,11 @@ const KEY = "uniq_checklist";
 const EVENT = "uniq:checklist";
 const TOTAL = CHECKLIST.length;
 
+/** Count only completed ids that still exist in CHECKLIST (ignores stale storage). */
+function completed(set: Set<string>): number {
+  return CHECKLIST.reduce((n, i) => n + (set.has(i.id) ? 1 : 0), 0);
+}
+
 function read(): Set<string> {
   try {
     const raw = localStorage.getItem(KEY);
@@ -49,12 +54,12 @@ export function useChecklist() {
   const toggle = useCallback(
     (id: string) => {
       const next = new Set(done);
-      const wasComplete = done.size >= TOTAL;
+      const wasComplete = completed(done) >= TOTAL;
       if (next.has(id)) next.delete(id);
       else next.add(id);
       setDone(next);
       write(next);
-      if (next.size >= TOTAL && !wasComplete) fireConfetti();
+      if (completed(next) >= TOTAL && !wasComplete) fireConfetti();
     },
     [done],
   );
@@ -65,7 +70,7 @@ export function useChecklist() {
     write(next);
   }, []);
 
-  const count = done.size;
+  const count = completed(done);
   return {
     done,
     ready,

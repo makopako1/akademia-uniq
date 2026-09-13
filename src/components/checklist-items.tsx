@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Check, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CHECKLIST } from "@/lib/site";
 import { useChecklist } from "@/lib/use-checklist";
@@ -50,27 +50,16 @@ export function ChecklistItems({ onNavigate }: { onNavigate?: () => void }) {
                 {item.label}
               </span>
 
-              {item.href &&
-                (item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-muted transition hover:bg-white/5 hover:text-ink"
-                    aria-label="Kup bilet"
-                  >
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                ) : (
-                  <Link
-                    href={item.href}
-                    onClick={onNavigate}
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-muted opacity-0 transition hover:bg-white/5 hover:text-ink group-hover:opacity-100"
-                    aria-label="Przejdź do instrukcji"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                ))}
+              {item.href && (
+                <Link
+                  href={item.href}
+                  onClick={onNavigate}
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-muted opacity-0 transition hover:bg-white/5 hover:text-ink group-hover:opacity-100"
+                  aria-label="Przejdź do instrukcji"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              )}
             </div>
           </li>
         );

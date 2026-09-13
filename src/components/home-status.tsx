@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Radio, ArrowRight, ArrowUpRight, PartyPopper, Compass } from "lucide-react";
+import { Radio, ArrowRight, PartyPopper, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SCHEDULE_WEEK, SCHEDULE_MONTH, CHECKLIST } from "@/lib/site";
 import { useChecklist } from "@/lib/use-checklist";
@@ -190,11 +190,7 @@ function NextStepCard() {
         </div>
         <span className="inline-flex items-center gap-1 text-sm font-medium text-ink">
           {allDone ? "Harmonogram" : "Przejdź"}
-          {next?.external ? (
-            <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-          ) : (
-            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-          )}
+          <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
         </span>
       </div>
     </>
@@ -203,13 +199,6 @@ function NextStepCard() {
   const cls = "glass edge-highlight group flex flex-col rounded-2xl p-5 transition hover:border-white/20";
   const href = allDone ? "/harmonogram" : next?.href ?? "/spolecznosc";
 
-  if (next?.external) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
-        {body}
-      </a>
-    );
-  }
   return (
     <Link href={href} className={cls}>
       {body}
