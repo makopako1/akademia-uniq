@@ -441,6 +441,7 @@ export const ACADEMY_VIDEOS = [
 /* ---------- Checklist pierwszych 48h ---------- */
 
 export const CHECKLIST: { id: string; label: string; href?: string }[] = [
+  { id: "academy", label: "Krok 0 — obejrzyj Akademię UNIQ na Vimeo (hasło UNIQ2026). Zacznij od tego!", href: "/akademia" },
   { id: "tg", label: "Dołącz do grup na Telegramie (UNIQ + UNIQ Elite) — poproś Lidera o linki", href: "/spolecznosc" },
   { id: "hello", label: "Napisz wiadomość powitalną na grupie UNIQ (krótko o sobie i celach)", href: "/spolecznosc" },
   { id: "pinned", label: "Przeczytaj przypięte wiadomości na grupie", href: "/spolecznosc" },
@@ -449,7 +450,6 @@ export const CHECKLIST: { id: string; label: string; href?: string }[] = [
   { id: "solantis", label: "Załóż konto na Solantis (link od Lidera)", href: "/broker" },
   { id: "signals", label: "Podłącz Telegram do grup sygnałowych (UNIQ Hub)", href: "/sygnaly" },
   { id: "tv", label: "Załóż TradingView i przypisz wskaźniki UNIQ", href: "/tradingview" },
-  { id: "academy", label: "Obejrzyj Akademię UNIQ na Vimeo (hasło UNIQ2026)", href: "/akademia" },
   { id: "calendar", label: "Zapisz harmonogram spotkań w kalendarzu", href: "/harmonogram" },
 ];
 

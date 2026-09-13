@@ -18,11 +18,13 @@ import {
   Eyebrow,
   GlassCard,
   Chip,
+  Callout,
   Glow,
   ExternalButton,
   InternalButton,
   LeaderBadge,
 } from "@/components/kit";
+import { CopyPill } from "@/components/copy-pill";
 import { Button } from "@/components/ui/button";
 import { Reveal, HeroReveal } from "@/components/reveal";
 import { Checklist } from "@/components/checklist";
@@ -52,22 +54,21 @@ export default function Home() {
             </h1>
 
             <p data-hero className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Twój przewodnik krok po kroku. Platforma, narzędzia, broker, grupy sygnałowe,
-              TradingView i harmonogram — wszystko poukładane tak, żeby żółtodziób ruszył z miejsca
-              w jeden wieczór.
+              Twój przewodnik krok po kroku. <span className="text-ink">Zacznij od Akademii UNIQ na Vimeo</span> —
+              tam wszystko jest wytłumaczone — a dopiero potem spokojnie przejdź przez kolejne kroki.
             </p>
 
             <div data-hero className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <Button asChild size="lg">
-                <Link href="/spolecznosc">
-                  Zacznij od kroku 1
+              <ExternalButton href={SITE.links.vimeo} size="lg">
+                <Play className="h-4 w-4" />
+                Obejrzyj Akademię (Vimeo)
+              </ExternalButton>
+              <Button asChild variant="secondary" size="lg">
+                <Link href="#krok-0">
+                  Jak zacząć?
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <ExternalButton href={SITE.links.vimeo} variant="secondary" size="lg">
-                <Play className="h-4 w-4" />
-                Akademia na Vimeo
-              </ExternalButton>
             </div>
 
             <p data-hero className="mt-5 font-mono text-xs text-faint">
@@ -91,6 +92,77 @@ export default function Home() {
           </Reveal>
         </Container>
       </section>
+
+      {/* ================= KROK 0: AKADEMIA (start here) ================= */}
+      <Section id="krok-0" className="scroll-mt-24 pt-4 sm:pt-6">
+        <Container>
+          <Reveal>
+            <div className="conic-border rounded-[1.75rem]">
+              <GlassCard strong className="relative overflow-hidden rounded-[1.75rem]">
+                <Glow accent="gold" className="-right-16 -top-16 h-72 w-72" opacity={0.2} />
+                <div className="relative grid gap-8 p-7 sm:p-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+                  {/* video poster */}
+                  <a
+                    href={SITE.links.vimeo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative order-first block aspect-video overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-panel-2 to-black lg:order-last"
+                  >
+                    <div className="grid-lines pointer-events-none absolute inset-0 opacity-40" />
+                    <Glow accent="gold" className="left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2" opacity={0.28} />
+                    <div className="relative flex h-full flex-col items-center justify-center gap-4">
+                      <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-black shadow-[0_0_50px_rgba(255,255,255,0.35)] transition-transform duration-200 group-hover:scale-110">
+                        <Play className="h-7 w-7 translate-x-0.5" fill="currentColor" />
+                      </span>
+                      <div className="text-center">
+                        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Akademia UNIQ</div>
+                        <div className="mt-1 text-sm text-muted">Vimeo · 16+ lekcji</div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* content */}
+                  <div className="order-last lg:order-first">
+                    <Eyebrow accent="gold">Krok 0 · Zacznij tutaj</Eyebrow>
+                    <h2 className="mt-4 text-3xl font-semibold leading-[1.1] sm:text-4xl">
+                      Najpierw obejrzyj <span className="text-chrome">Akademię UNIQ</span> na Vimeo
+                    </h2>
+                    <p className="mt-4 text-base leading-relaxed text-muted">
+                      To Twój pierwszy krok — <strong className="text-ink">zanim wejdziesz na platformę</strong> czy
+                      cokolwiek skonfigurujesz. W Akademii mamy 16+ filmów, które tłumaczą wszystko po kolei.
+                      Obejrzyj je, a reszta stanie się banalnie prosta.
+                    </p>
+
+                    <div className="mt-6 flex flex-wrap items-center gap-3">
+                      <ExternalButton href={SITE.links.vimeo} size="lg">
+                        <Play className="h-4 w-4" />
+                        Otwórz Akademię na Vimeo
+                      </ExternalButton>
+                      <CopyPill label="Hasło" value={SITE.academyPassword} />
+                    </div>
+
+                    <div className="mt-6">
+                      <Callout variant="warning" title="Nie pomyl dwóch rzeczy 👇">
+                        <ul className="space-y-1.5">
+                          <li>
+                            <strong className="text-ink">Akademia UNIQ</strong> = filmy na{" "}
+                            <strong className="text-ink">Vimeo</strong> → <strong className="text-ink">zacznij TU</strong>{" "}
+                            (hasło UNIQ2026).
+                          </li>
+                          <li>
+                            <strong className="text-ink">Platforma uniqglobal.net</strong> = Twój panel z narzędziami →
+                            wchodzisz <strong className="text-ink">później</strong> (krok 2).
+                          </li>
+                        </ul>
+                      </Callout>
+                    </div>
+                  </div>
+                </div>
+              </GlassCard>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
 
       {/* ================= STATUS: next step + next session ================= */}
       <Section className="py-6 sm:py-8">

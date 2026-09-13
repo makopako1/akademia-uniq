@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, Lock, ArrowUpRight } from "lucide-react";
+import { ChevronDown, Menu, X, Lock, ArrowUpRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LogoWordmark } from "@/components/logo";
 import { STEPS, SITE } from "@/lib/site";
 
-type Item = { label: string; href: string; locked?: boolean; desc?: string };
+type Item = { label: string; href: string; locked?: boolean; desc?: string; external?: boolean };
 
 const STEP_ITEMS: Item[] = STEPS.map((s) => ({
   label: `${s.n}. ${s.short}`,
@@ -21,6 +21,7 @@ const MORE_ITEMS: Item[] = [
   { label: "Podstawy tradingu", href: "/trading", desc: "Mindset, psychologia i ryzyko." },
   { label: "Pakiety", href: "/pakiety", desc: "Poziomy członkostwa." },
   { label: "Model biznesowy", href: "/network", locked: true, desc: "Plan wynagrodzeń." },
+  { label: "Platforma UNIQ", href: SITE.links.platformApp, external: true, desc: "Twój panel — wchodzisz później." },
   { label: "FAQ i wsparcie", href: "/faq", desc: "Najczęstsze pytania." },
 ];
 
@@ -92,7 +93,6 @@ export function SiteHeader() {
             pathname={pathname}
           />
           <NavLink href="/harmonogram" active={isActive("/harmonogram")}>Harmonogram</NavLink>
-          <NavLink href="/akademia" active={isActive("/akademia")}>Akademia</NavLink>
           <Dropdown
             label="Baza wiedzy"
             items={MORE_ITEMS}
@@ -104,15 +104,13 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-2">
-          <a
-            href={SITE.links.platformApp}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/akademia"
             className="hidden h-10 items-center gap-1.5 rounded-full bg-white px-4 text-[13px] font-semibold text-black transition hover:bg-white/90 sm:inline-flex"
           >
-            Platforma UNIQ
-            <ArrowUpRight className="h-3.5 w-3.5 opacity-70" />
-          </a>
+            <Play className="h-3.5 w-3.5" fill="currentColor" />
+            Akademia
+          </Link>
           <button
             onClick={() => setOpen((v) => !v)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-ink lg:hidden"
@@ -148,19 +146,18 @@ export function SiteHeader() {
             items={[
               { label: "Pakiety", href: "/pakiety" },
               { label: "Model biznesowy", href: "/network", locked: true },
+              { label: "Platforma UNIQ", href: SITE.links.platformApp, external: true },
               { label: "FAQ i wsparcie", href: "/faq" },
             ]}
             pathname={pathname}
           />
-          <a
-            href={SITE.links.platformApp}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/akademia"
             className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white text-sm font-semibold text-black"
           >
-            Otwórz platformę UNIQ
-            <ArrowUpRight className="h-4 w-4 opacity-70" />
-          </a>
+            <Play className="h-4 w-4" fill="currentColor" />
+            Obejrzyj Akademię (Vimeo)
+          </Link>
         </div>
       </div>
     </header>
@@ -224,23 +221,28 @@ function Dropdown({
       >
         <div className="glass-strong edge-highlight overflow-hidden rounded-2xl p-2">
           {items.map((it) => {
-            const active = pathname.startsWith(it.href) && it.href !== "/";
-            return (
-              <Link
-                key={it.href}
-                href={it.href}
-                className={cn(
-                  "flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors",
-                  active ? "bg-white/[0.06]" : "hover:bg-white/[0.05]",
-                )}
-              >
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5 text-sm font-medium text-ink">
-                    {it.label}
-                    {it.locked && <Lock className="h-3 w-3 text-violet" />}
-                  </div>
-                  {it.desc && <p className="truncate text-xs text-faint">{it.desc}</p>}
+            const active = !it.external && pathname.startsWith(it.href) && it.href !== "/";
+            const cls = cn(
+              "flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors",
+              active ? "bg-white/[0.06]" : "hover:bg-white/[0.05]",
+            );
+            const inner = (
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 text-sm font-medium text-ink">
+                  {it.label}
+                  {it.locked && <Lock className="h-3 w-3 text-violet" />}
+                  {it.external && <ArrowUpRight className="h-3 w-3 text-faint" />}
                 </div>
+                {it.desc && <p className="truncate text-xs text-faint">{it.desc}</p>}
+              </div>
+            );
+            return it.external ? (
+              <a key={it.href} href={it.href} target="_blank" rel="noopener noreferrer" className={cls}>
+                {inner}
+              </a>
+            ) : (
+              <Link key={it.href} href={it.href} className={cls}>
+                {inner}
               </Link>
             );
           })}
@@ -254,25 +256,35 @@ function MobileLink({
   href,
   active,
   locked,
+  external,
   children,
 }: {
   href: string;
   active?: boolean;
   locked?: boolean;
+  external?: boolean;
   children: React.ReactNode;
 }) {
-  return (
-    <Link
-      href={href}
-      className={cn(
-        "flex items-center justify-between rounded-xl px-3 py-2.5 text-[15px] font-medium transition-colors",
-        active ? "bg-white/[0.06] text-white" : "text-muted hover:text-ink",
-      )}
-    >
+  const cls = cn(
+    "flex items-center justify-between rounded-xl px-3 py-2.5 text-[15px] font-medium transition-colors",
+    active ? "bg-white/[0.06] text-white" : "text-muted hover:text-ink",
+  );
+  const inner = (
+    <>
       <span className="flex items-center gap-2">
         {children}
         {locked && <Lock className="h-3.5 w-3.5 text-violet" />}
       </span>
+      {external && <ArrowUpRight className="h-4 w-4 opacity-60" />}
+    </>
+  );
+  return external ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+      {inner}
+    </a>
+  ) : (
+    <Link href={href} className={cls}>
+      {inner}
     </Link>
   );
 }
@@ -295,7 +307,8 @@ function MobileGroup({
             key={it.href}
             href={it.href}
             locked={it.locked}
-            active={it.href !== "/" && pathname.startsWith(it.href)}
+            external={it.external}
+            active={!it.external && it.href !== "/" && pathname.startsWith(it.href)}
           >
             {it.label}
           </MobileLink>
